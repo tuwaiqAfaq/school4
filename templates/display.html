@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شاشة العرض - {{ school_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/display.css') }}" />
+</head>
+<body id="displayBody">
+    <div class="display-container">
+        <div class="header">
+            <div class="logo-container">
+                <img id="schoolLogo" src="" alt="شعار المدرسة" style="display: none;" />
+            </div>
+            <h1 id="schoolTitle">مدرسة {{ school_name }}</h1>
+        </div>
+
+        <div class="names-container">
+            <h2>أسماء الطلاب</h2>
+            <div id="namesList" class="names-list">
+                <!-- الأسماء ستظهر هنا -->
+            </div>
+        </div>
+    </div>
+
+    <!-- تعريف المتغيرات قبل تحميل السكربتات -->
+    <script>
+        const schoolName = "{{ school_name }}";
+        const initialSettings = {{ settings | tojson }};
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/display.js') }}"></script>
+</body>
+</html>

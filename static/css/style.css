@@ -1,0 +1,255 @@
+/* تنسيقات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #34495e;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* تنسيقات النماذج */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input[type="text"], 
+input[type="color"], 
+select, 
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, 
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.toggle-btn {
+    background-color: #e74c3c;
+    width: auto;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.toggle-btn:hover {
+    background-color: #c0392b;
+}
+
+/* رسائل التأكيد */
+.message {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* لوحة الإدارة */
+.admin-panel {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* معاينة الشاشة */
+.preview-section {
+    margin-top: 30px;
+}
+
+.preview-display {
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    text-align: center;
+    min-height: 200px;
+}
+
+.sample-names {
+    margin-top: 20px;
+}
+
+.name-item {
+    background-color: #e8f4fd;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border-right: 4px solid #3498db;
+}
+
+/* قائمة المدارس */
+.schools-list {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* قسم الروابط */
+.links-section {
+    background-color: #e8f6f3;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.links-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.links-section li {
+    margin: 10px 0;
+}
+
+.links-section a {
+    color: #27ae60;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.links-section a:hover {
+    background-color: #d5f4e6;
+}
+
+/* تعليمات الاستخدام */
+.instructions {
+    background-color: #fff3cd;
+    padding: 20px;
+    border-radius: 8px;
+    border-right: 4px solid #ffc107;
+    margin-top: 30px;
+}
+
+.instructions ol, .instructions ul {
+    margin-right: 20px;
+}
+
+.instructions li {
+    margin: 8px 0;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+}
+

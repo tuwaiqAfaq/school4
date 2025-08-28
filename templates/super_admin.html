@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>لوحة تحكم المالك</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>لوحة تحكم المالك</h1>
+
+        <div class="admin-panel">
+            <h3>إضافة مدرسة جديدة</h3>
+            <form action="/add_school" method="POST">
+                <label for="school_name">اسم المدرسة:</label>
+                <input type="text" id="school_name" name="school_name" required />
+                <button type="submit">إضافة مدرسة</button>
+            </form>
+        </div>
+
+        <div class="schools-list">
+            <h3>المدارس المسجلة</h3>
+            {% if schools %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اسم المدرسة</th>
+                            <th>الروابط</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for school in schools %}
+                        <tr>
+                            <td>{{ school.name }}</td>
+                            <td>
+                                <a href="/{{ school.name }}/entry" target="_blank">ولي الأمر</a> |
+                                <a href="/{{ school.name }}/display" target="_blank">العرض</a> |
+                                <a href="/{{ school.name }}/admin" target="_blank">الإدارة</a>
+                            </td>
+                            <td>
+                                <form action="/toggle_school/{{ school.name }}" method="POST" style="display: inline;">
+                                    <button type="submit">تفعيل/إيقاف</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>لا توجد مدارس مسجلة حتى الآن.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

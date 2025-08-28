@@ -1,0 +1,193 @@
+/* تنسيقات شاشة العرض */
+#displayBody {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 24px;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.display-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 20px;
+}
+
+.logo-container {
+    margin-bottom: 20px;
+}
+
+#schoolLogo {
+    max-height: 100px;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+#schoolTitle {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.names-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.names-container h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.names-list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.name-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: scale(0);
+    animation: slideIn 0.5s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.name-display::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+}
+
+.name-display:hover::before {
+    animation: shine 0.6s ease-in-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) rotate(90deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+        top: -50%;
+    }
+    100% {
+        left: 150%;
+        top: 150%;
+    }
+}
+
+/* تأثيرات الألوان المختلفة للأسماء */
+.name-display:nth-child(1) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.name-display:nth-child(2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.name-display:nth-child(3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.name-display:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.name-display:nth-child(5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.name-display:nth-child(6) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+.name-display:nth-child(7) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+.name-display:nth-child(8) { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+.name-display:nth-child(9) { background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%); }
+.name-display:nth-child(10) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+.name-display:nth-child(11) { background: linear-gradient(135deg, #ff8a80 0%, #ea80fc 100%); }
+.name-display:nth-child(12) { background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%); }
+
+/* رسالة عدم وجود أسماء */
+.no-names {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 1.5em;
+    margin-top: 50px;
+    font-style: italic;
+}
+
+/* تصميم متجاوب لشاشة العرض */
+@media (max-width: 1200px) {
+    .names-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 12px;
+    }
+    
+    #schoolTitle {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .display-container {
+        padding: 15px;
+    }
+    
+    .names-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .name-display {
+        padding: 15px;
+        font-size: 1em;
+    }
+    
+    #schoolTitle {
+        font-size: 1.8em;
+    }
+    
+    .names-container h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .names-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .name-display {
+        padding: 12px;
+        font-size: 0.9em;
+    }
+}
+

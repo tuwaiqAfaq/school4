@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المدرسة - {{ school_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body id="adminBody">
+    <div class="container">
+        <h1>لوحة تحكم المدرسة</h1>
+        <h2>مدرسة {{ school_name }}</h2>
+        
+        <div class="admin-panel">
+            <h3>تخصيص شكل الشاشة</h3>
+            
+            <form id="settingsForm">
+                <div class="form-group">
+                    <label for="backgroundColor">لون الخلفية:</label>
+                    <input type="color" id="backgroundColor" name="backgroundColor" value="{{ settings.background_color }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="textColor">لون النص:</label>
+                    <input type="color" id="textColor" name="textColor" value="{{ settings.text_color }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fontSize">حجم الخط:</label>
+                    <select id="fontSize" name="fontSize">
+                        <option value="18px" {% if settings.font_size == '18px' %}selected{% endif %}>صغير</option>
+                        <option value="24px" {% if settings.font_size == '24px' %}selected{% endif %}>متوسط</option>
+                        <option value="32px" {% if settings.font_size == '32px' %}selected{% endif %}>كبير</option>
+                        <option value="40px" {% if settings.font_size == '40px' %}selected{% endif %}>كبير جداً</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="logoUpload">شعار المدرسة:</label>
+                    <input type="file" id="logoUpload" name="logoUpload" accept="image/*">
+                    <small>اختر صورة للشعار (اختياري)</small>
+                </div>
+                
+                <button type="submit">حفظ التغييرات</button>
+            </form>
+            
+            <div class="preview-section">
+                <h3>معاينة الشاشة</h3>
+                <div id="preview" class="preview-display">
+                    <h4>مدرسة {{ school_name }}</h4>
+                    <div class="sample-names">
+                        <div class="name-item">أحمد محمد</div>
+                        <div class="name-item">فاطمة علي</div>
+                        <div class="name-item">محمد أحمد</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="links-section">
+            <h3>روابط المدرسة</h3>
+            <ul>
+                <li><a href="/{{ school_name }}/entry" target="_blank">صفحة ولي الأمر</a></li>
+                <li><a href="/{{ school_name }}/display" target="_blank">شاشة العرض</a></li>
+            </ul>
+        </div>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script>
+        const schoolName = "{{ school_name }}";
+        const currentSettings = {{ settings | tojson }};
+
+        // تطبيق الإعدادات مباشرة على الصفحة
+        const body = document.getElementById('adminBody');
+        body.style.backgroundColor = currentSettings.background_color || '#ffffff';
+        body.style.color = currentSettings.text_color || '#000000';
+        body.style.fontSize = currentSettings.font_size || '24px';
+    </script>
+</body>
+</html>

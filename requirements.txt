@@ -1,0 +1,6 @@
+Flask
+Flask-SocketIO
+Eventlet
+Werkzeug
+python-dotenv
+gunicorn
